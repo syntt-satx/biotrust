@@ -1,0 +1,17 @@
+{
+  "name": "biotrust",
+  "version": "2.0.0",
+  "description": "BioTrust — Verified Biodiversity Information Management System",
+  "private": true,
+  "scripts": {
+    "start": "npm run dev --prefix server",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build:client": "npm run build --prefix client",
+    "build:server": "npm run build --prefix server",
+    "build": "npm run build --prefix client && npm run build --prefix server",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
+  }
+}

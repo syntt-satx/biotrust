@@ -1,0 +1,240 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --bg-kraft: #EFE9DF;
+  --surface-raw: #F9F6F0;
+  --accent-forest: #2C5E3B;
+  --accent-orange: #E65F2B;
+  --text-charcoal: #1C1B18;
+  --text-muted: #8C8476;
+  --border-grid: #D6CEBE;
+  --border-hard: #1C1B18;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EFE9DF;
+  color: #1C1B18;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  background-color: #EFE9DF;
+}
+
+/* Eco-Brutalism Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #EFE9DF;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C1B18;
+  border: 1px solid #EFE9DF;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2C5E3B;
+}
+
+/* Eco-Brutalist Hard Card Containers (Hard 2px Borders, Zero Soft Blur) */
+.cmd-card {
+  background-color: #F9F6F0;
+  border: 2px solid #1C1B18;
+  box-shadow: 4px 4px 0px #1C1B18;
+  border-radius: 0px;
+  position: relative;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.cmd-card:hover {
+  box-shadow: 5px 5px 0px #1C1B18;
+}
+
+.cmd-card-sm {
+  background-color: #F9F6F0;
+  border: 2px solid #1C1B18;
+  box-shadow: 2px 2px 0px #1C1B18;
+  border-radius: 0px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.cmd-card-sm:hover {
+  box-shadow: 3px 3px 0px #1C1B18;
+}
+
+/* Hard-edged Inputs with high contrast */
+.cmd-input {
+  background-color: #F9F6F0;
+  border: 2px solid #1C1B18;
+  color: #1C1B18;
+  outline: none;
+  border-radius: 0px;
+  box-shadow: 2px 2px 0px #1C1B18;
+  transition: all 0.12s ease-in-out;
+}
+
+.cmd-input:focus {
+  border-color: #1C1B18;
+  background-color: #FFFFFF;
+  box-shadow: 3px 3px 0px #2C5E3B;
+}
+
+.cmd-input option {
+  background-color: #F9F6F0;
+  color: #1C1B18;
+}
+
+/* Eco-Brutalist Action Buttons (Sharp 2px border, hard shadow, crisp snap) */
+.btn-primary {
+  background-color: #2C5E3B;
+  color: #F9F6F0;
+  border: 2px solid #1C1B18;
+  font-weight: 700;
+  border-radius: 0px;
+  box-shadow: 3px 3px 0px #1C1B18;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #1C1B18;
+  color: #F9F6F0;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #2C5E3B;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #1C1B18;
+}
+
+.btn-orange {
+  background-color: #E65F2B;
+  color: #FFFFFF;
+  border: 2px solid #1C1B18;
+  font-weight: 700;
+  border-radius: 0px;
+  box-shadow: 3px 3px 0px #1C1B18;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-orange:hover:not(:disabled) {
+  background-color: #1C1B18;
+  color: #E65F2B;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #E65F2B;
+}
+
+.btn-orange:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #1C1B18;
+}
+
+.btn-secondary {
+  background-color: #F9F6F0;
+  color: #1C1B18;
+  border: 2px solid #1C1B18;
+  font-weight: 700;
+  border-radius: 0px;
+  box-shadow: 2px 2px 0px #1C1B18;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #EFE9DF;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #1C1B18;
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #1C1B18;
+}
+
+.btn-moss {
+  background-color: #2C5E3B;
+  color: #F9F6F0;
+  border: 2px solid #1C1B18;
+  font-weight: 700;
+  border-radius: 0px;
+  box-shadow: 2px 2px 0px #1C1B18;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-moss:hover:not(:disabled) {
+  background-color: #1C1B18;
+  color: #2C5E3B;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #2C5E3B;
+}
+
+/* Archival Badges & Stamps */
+.badge-forest {
+  background-color: #2C5E3B;
+  color: #F9F6F0;
+  border: 1.5px solid #1C1B18;
+}
+
+.badge-orange {
+  background-color: #E65F2B;
+  color: #FFFFFF;
+  border: 1.5px solid #1C1B18;
+}
+
+.badge-kraft {
+  background-color: #EFE9DF;
+  color: #1C1B18;
+  border: 1.5px solid #1C1B18;
+}
+
+.badge-stone {
+  background-color: #D6CEBE;
+  color: #1C1B18;
+  border: 1.5px solid #1C1B18;
+}
+
+/* Map Containers */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border: 2px solid #1C1B18;
+  background-color: #EFE9DF !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #F9F6F0 !important;
+  color: #1C1B18 !important;
+  border: 2px solid #1C1B18 !important;
+  box-shadow: 4px 4px 0px #1C1B18 !important;
+  border-radius: 0px !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #F9F6F0 !important;
+  border: 2px solid #1C1B18 !important;
+}

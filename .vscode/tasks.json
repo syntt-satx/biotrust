@@ -1,0 +1,51 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1. Run Full App (Backend + Client on Port 5000)",
+      "type": "shell",
+      "command": "npm run build:client && npm run server",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "biotrust"
+      }
+    },
+    {
+      "label": "2. Start Backend API Server (Port 5000)",
+      "type": "shell",
+      "command": "npm run server",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "biotrust"
+      }
+    },
+    {
+      "label": "3. Start Frontend Vite Dev Server (Port 5173)",
+      "type": "shell",
+      "command": "npm run client",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "biotrust"
+      }
+    },
+    {
+      "label": "Build Client (Production)",
+      "type": "shell",
+      "command": "npm run build:client",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$tsc"]
+    }
+  ]
+}
